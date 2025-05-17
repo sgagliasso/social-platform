@@ -1,0 +1,36 @@
+Tabella Utenti:
+id              - INT                     - PRIMARY KEY UNIQUE, AUTO_INCREMENT
+username        - VARCHAR(255)            - NOT NULL, UNIQUE
+email           - VARCHAR(255)            - NOT NULL, UNIQUE
+password        - VARCHAR(255)            - NOT NULL
+foto_profilo    - VARCHAR(255)            - NULL
+biografia       - TEXT                    - NULL
+nome            - VARCHAR(255)            - NULL
+cognome         - VARCHAR(255)            - NULL
+
+Tabella Post: 
+id               - INT                     - PRIMARY KEY UNIQUE, AUTO_INCREMENT
+id_utente        - INT                     - NOT NULL, FOREIGN KEY (id tabella utente)
+contenuto        - TEXT                    - NULL
+data_creazione   - DATETIME                - DEFAULT CURRENT_TIMESTAMP
+
+Tabella Media: 
+id               - INT                     - PRIMARY KEY UNIQUE, AUTO_INCREMENT
+id_post          - INT                     - NOT NULL, FOREIGN KEY (id tabella post)
+tipo             - VARCHAR(255)            - NOT NULL
+url_media        - VARCHAR(255)            - NOT NULL
+
+Tabella Tag:
+id               - INT                     - PRIMARY KEY UNIQUE, AUTO_INCREMENT
+nome             - VARCHAR(255)            - NOT NULL, UNIQUE
+
+Tabella Post_Tag:
+id               - INT                     - PRIMARY KEY UNIQUE, AUTO_INCREMENT
+id_post          - INT                     - NOT NULL, FOREIGN KEY (id tabella post)
+id_tag           - INT                     - NOT NULL, FOREIGN KEY (id tabella tag)
+
+Tabella Like: 
+id               - INT                     - PRIMARY KEY UNIQUE, AUTO_INCREMENT
+id_utente        - INT                     - NOT NULL, FOREIGN KEY (id tabella utente)
+id_post          - INT                     - NOT NULL, FOREIGN KEY (id tabella post)
+
